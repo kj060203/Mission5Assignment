@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Calculator";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" href="/images/icons8-earth-globe-16.png" type="image/png" />
+    <link rel="stylesheet" href="@Url.Content("~/css/site.css")">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#calculate").click(function() {
+                var hours = parseFloat($("#hours").val());
+                var rate = 15;
+        if (!isNaN(hours) && hours > 0) {
+            $("#total").val(hours * rate);
+        } else {
+            alert("Enter a valid number of hours.");
+        }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <label for="hourlyRate">Hourly Rate:</label>
+    <input type="text" id="hourlyRate" value="$15.00" readonly style="border: 1px solid #ccc; padding: 5px; width: 100px;">
+
+    <label>Hours:</label>
+    <input type="number" id="hours" min="1">
+    <button id="calculate">Calculate</button>
+    <input type="text" id="total" readonly>
+    <br>
+    <a href="@Url.Action("Index", "Home")">Back to Home</a>
+
+    <footer style="text-align: center; padding: 20px; background-color: #f1f1f1; position: fixed; width: 100%; bottom: 0;">
+        <p>&copy; 2025 Kate's Hobby. All rights reserved.</p>
+        <p>Built with love by Kate. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
